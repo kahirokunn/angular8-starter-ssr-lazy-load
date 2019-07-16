@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GithubUserInfoService,
   IUserInfo,
-} from '@/app/shared/service/github-user-info.service';
+} from '@/app/service/github-user-info.service';
 import { Subscription } from 'rxjs';
 
 @Component({

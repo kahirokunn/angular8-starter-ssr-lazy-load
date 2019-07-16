@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 
-import { AppModule } from '../app/app.module';
-import { AppComponent } from '../app/component/app.component';
+import { AppModule } from '@/app/app.module';
+import { AppComponent } from './app-module/component/app.component';
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 
 @NgModule({
