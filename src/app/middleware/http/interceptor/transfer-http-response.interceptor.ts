@@ -17,7 +17,7 @@ function keyFactory(req: HttpRequest<any>) {
 }
 
 @Injectable()
-export class TransferHttpGetResponseInterceptor implements HttpInterceptor {
+export class TransferHttpResponseInterceptor implements HttpInterceptor {
   constructor(
     private transferState: TransferState,
     @Inject(PLATFORM_ID) private platformId: string

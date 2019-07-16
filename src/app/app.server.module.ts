@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-
-import { AppBrowserModule } from '@/app/app.browser.module';
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 
-import { AppComponent } from './app-module/component/app.component';
+import { AppBrowserModule } from './app.browser.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [

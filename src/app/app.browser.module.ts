@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from '@/app/app-routing.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AppComponent } from '@/app/app-module/component/app.component';
+import { RoutingModule } from '@/app/middleware/routing/routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { TransferHttpCacheModule } from '@nguniversal/common';
+import { AppComponent } from './app.component';
 import { PrebootModule } from 'preboot';
-import { TransferHttpGetResponseInterceptor } from '@/app/core/http/interceptor/transfer-http-get-response.interceptor';
-import { UniversalInterceptor } from '@/app/core/http/interceptor/universal.interceptor';
-import { ServerTransition } from './core/serverTransition/server-transition.module';
+import { ServerTransition } from '@/app/middleware/serverTransition/server-transition.module';
+import { universalInterceptorProvider } from './middleware/http/universal-interceptor.provider';
+import { TransferHttpResponseInterceptorProvider } from './middleware/http/transfer-http-response-interceptor.provider';
 
 @NgModule({
   declarations: [
@@ -15,23 +15,15 @@ import { ServerTransition } from './core/serverTransition/server-transition.modu
   ],
   imports: [
     BrowserModule,
+    TransferHttpCacheModule,
     ServerTransition.forRoot({ appId: 'universal' }),
     PrebootModule.withConfig({ appRoot: 'app-root' }),
-    TransferHttpCacheModule,
-    AppRoutingModule,
+    RoutingModule,
     HttpClientModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: UniversalInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TransferHttpGetResponseInterceptor,
-      multi: true
-    },
+    universalInterceptorProvider,
+    TransferHttpResponseInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
