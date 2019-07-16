@@ -2,16 +2,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { IndexComponent } from './index.component';
+import { UsersKahiroComponent } from './users-kahiro.component';
 import { universalInterceptorProvider } from '@/app/middleware/http/universal-interceptor.provider';
 
 describe('IndexComponent', () => {
-  let component: IndexComponent;
-  let fixture: ComponentFixture<IndexComponent>;
+  let component: UsersKahiroComponent;
+  let fixture: ComponentFixture<UsersKahiroComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [IndexComponent],
+      declarations: [UsersKahiroComponent],
       imports: [
         HttpClientTestingModule,
         FormsModule,
@@ -23,7 +23,7 @@ describe('IndexComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndexComponent);
+    fixture = TestBed.createComponent(UsersKahiroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
