@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { AppComponent } from './app.component';
 import { PrebootModule } from 'preboot';
-import { ServerTransition } from '@/app/middleware/serverTransition/server-transition.module';
+import { ServerTransition } from '@/app/middleware/server-transition/server-transition.module';
 import { universalInterceptorProvider } from './middleware/http/universal-interceptor.provider';
 import { TransferHttpResponseInterceptorProvider } from './middleware/http/transfer-http-response-interceptor.provider';
 
