@@ -1,4 +1,6 @@
 <p>index works!</p>
+<input type="text" [(ngModel)]="someText" />
+<p>{{ someText }}</p>
 <ng-container *ngIf="user">
   <p>{{ user | json }}</p>
 </ng-container>

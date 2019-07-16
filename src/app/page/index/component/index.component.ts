@@ -8,10 +8,11 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.scss']
+  styles: ['p { font-size: 100px; }']
 })
 export class IndexComponent implements OnInit, OnDestroy {
 
+  someText = ''
   user: IUserInfo
   subscription: Subscription
 
