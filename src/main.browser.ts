@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('boot app')
     platformBrowserDynamic()
       .bootstrapModule(AppBrowserModule)
-      .then(() => console.log('initialized app'))
       .catch(err => console.error(err));
   }, 2000)
 });
+
+document.addEventListener('PrebootComplete', () => {
+  console.log("initialized app")
+})

@@ -4,6 +4,7 @@ import {
   IUserInfo,
 } from '@/app/service/github-user-info.service';
 import { Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-index',
@@ -23,7 +24,11 @@ export class IndexComponent implements OnInit, OnDestroy {
     this.subscription = this
       .githubUserInfoService
       .user$
-      .subscribe(user => this.user = user)
+      .pipe(delay(3000))
+      .subscribe(user => {
+        console.log("received user")
+        this.user = user
+      })
   }
 
   ngOnDestroy() {
