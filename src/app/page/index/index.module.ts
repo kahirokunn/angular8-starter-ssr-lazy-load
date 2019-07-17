@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { IndexComponent } from './component/index.component';
 import { FormsModule } from '@angular/forms';
-import { SomeComponent } from '@/app/component/some-component/index.component';
+import { SomeComponent } from '@/app/component/some-component/some.component';
 
 @NgModule({
   declarations: [

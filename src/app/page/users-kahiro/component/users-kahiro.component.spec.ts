@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { UsersKahiroComponent } from './users-kahiro.component';
-import { universalInterceptorProvider } from '@/app/middleware/http/universal-interceptor.provider';
+import { UniversalInterceptorModule } from '@/app/middleware/http/universal-interceptor.module';
 
 describe('IndexComponent', () => {
   let component: UsersKahiroComponent;
@@ -14,11 +14,9 @@ describe('IndexComponent', () => {
       declarations: [UsersKahiroComponent],
       imports: [
         HttpClientTestingModule,
+        UniversalInterceptorModule,
         FormsModule,
       ],
-      providers: [
-        universalInterceptorProvider
-      ]
     }).compileComponents();
   }));
 

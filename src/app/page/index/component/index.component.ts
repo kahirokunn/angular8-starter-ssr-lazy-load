@@ -4,7 +4,6 @@ import {
   IUserInfo,
 } from '@/app/service/github-user-info.service';
 import { Subscription } from 'rxjs';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-index',
@@ -20,15 +19,11 @@ export class IndexComponent implements OnInit, OnDestroy {
   constructor(private githubUserInfoService: GithubUserInfoService) { }
 
   ngOnInit() {
-    this.githubUserInfoService.fetchUser('kahirokunn')
     this.subscription = this
       .githubUserInfoService
       .user$
-      .pipe(delay(3000))
-      .subscribe(user => {
-        console.log("received user")
-        this.user = user
-      })
+      .subscribe(user => this.user = user)
+    this.githubUserInfoService.fetchUser('kahirokunn')
   }
 
   ngOnDestroy() {

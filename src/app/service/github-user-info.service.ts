@@ -52,7 +52,7 @@ export class GithubUserInfoService {
   fetchUser(userName: string) {
     this
       .httpClient
-      .get(`https://api.github.com/users/${userName}`)
-      .subscribe(this._user$)
+      .get<IUserInfo>(`https://api.github.com/users/${userName}`)
+      .subscribe(v => this._user$.next(v), e => this._user$.error(e))
   }
 }

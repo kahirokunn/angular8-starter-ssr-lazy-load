@@ -9,14 +9,7 @@ if (environment.production) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    console.log('boot app')
-    platformBrowserDynamic()
-      .bootstrapModule(AppBrowserModule)
-      .catch(err => console.error(err));
-  }, 2000)
+  platformBrowserDynamic()
+    .bootstrapModule(AppBrowserModule)
+    .catch(err => console.error(err));
 });
-
-document.addEventListener('PrebootComplete', () => {
-  console.log("initialized app")
-})
