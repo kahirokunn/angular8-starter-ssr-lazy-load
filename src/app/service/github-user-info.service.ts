@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 
-export type IUserInfo = {
+/* eslint-disable */
+export interface IUserInfo {
   login: string;
   id: number;
   node_id: string;
@@ -41,10 +42,10 @@ export type IUserInfo = {
 })
 export class GithubUserInfoService {
 
-  private _user$: Subject<IUserInfo> = new Subject()
+  private _user$: Subject<IUserInfo> = new Subject();
 
   get user$(): Observable<IUserInfo> {
-    return this._user$
+    return this._user$;
   }
 
   constructor(private httpClient: HttpClient) { }
@@ -53,6 +54,6 @@ export class GithubUserInfoService {
     this
       .httpClient
       .get<IUserInfo>(`https://api.github.com/users/${userName}`)
-      .subscribe(v => this._user$.next(v), e => this._user$.error(e))
+      .subscribe(v => this._user$.next(v), e => this._user$.error(e));
   }
 }

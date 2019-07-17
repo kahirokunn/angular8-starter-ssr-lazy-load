@@ -6,4 +6,4 @@ export const universalInterceptorProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: UniversalInterceptor,
   multi: true
-}
+};

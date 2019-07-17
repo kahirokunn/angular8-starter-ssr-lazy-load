@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'some-component',
+  selector: 'app-some-component',
   template: '<p>sample</p>',
 })
 export class SomeComponent {

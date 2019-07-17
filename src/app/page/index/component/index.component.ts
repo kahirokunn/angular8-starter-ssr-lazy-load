@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
 })
 export class IndexComponent implements OnInit, OnDestroy {
 
-  someText = ''
-  user: IUserInfo
-  subscription: Subscription
+  someText = '';
+  user: IUserInfo;
+  subscription: Subscription;
 
   constructor(private githubUserInfoService: GithubUserInfoService) { }
 
@@ -22,11 +22,11 @@ export class IndexComponent implements OnInit, OnDestroy {
     this.subscription = this
       .githubUserInfoService
       .user$
-      .subscribe(user => this.user = user)
-    this.githubUserInfoService.fetchUser('kahirokunn')
+      .subscribe(user => this.user = user);
+    this.githubUserInfoService.fetchUser('kahirokunn');
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 }

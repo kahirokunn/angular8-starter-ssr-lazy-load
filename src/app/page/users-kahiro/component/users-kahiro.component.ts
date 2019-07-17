@@ -12,21 +12,21 @@ import { Subscription } from 'rxjs';
 })
 export class UsersKahiroComponent implements OnInit, OnDestroy {
 
-  someText = ''
-  user: IUserInfo
-  subscription: Subscription
+  someText = '';
+  user: IUserInfo;
+  subscription: Subscription;
 
   constructor(private githubUserInfoService: GithubUserInfoService) { }
 
   ngOnInit() {
-    this.githubUserInfoService.fetchUser('kahirokunn')
+    this.githubUserInfoService.fetchUser('kahirokunn');
     this.subscription = this
       .githubUserInfoService
       .user$
-      .subscribe(user => this.user = user)
+      .subscribe(user => this.user = user);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 }

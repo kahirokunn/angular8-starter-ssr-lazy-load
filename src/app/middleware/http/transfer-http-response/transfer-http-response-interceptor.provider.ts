@@ -6,4 +6,4 @@ export const transferHttpResponseInterceptorProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: TransferHttpResponseInterceptor,
   multi: true
-}
+};

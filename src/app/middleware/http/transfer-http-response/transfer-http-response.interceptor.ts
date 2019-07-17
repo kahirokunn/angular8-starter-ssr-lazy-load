@@ -18,7 +18,7 @@ interface TransferHttpResponse {
 function getHeadersMap(headers: HttpHeaders) {
   const headersMap: { [name: string]: string[] } = {};
   for (const key of headers.keys()) {
-    headersMap[key] = headers.getAll(key)!;
+    headersMap[key] = headers.getAll(key);
   }
   return headersMap;
 }
@@ -27,7 +27,7 @@ function getHeadersMap(headers: HttpHeaders) {
 export class TransferHttpResponseInterceptor implements HttpInterceptor {
 
   private isCacheActive = true;
-  private countRequest: { [key: string]: number } = {}
+  private countRequest: { [key: string]: number } = {};
 
   constructor(
     appRef: ApplicationRef,
@@ -50,11 +50,11 @@ export class TransferHttpResponseInterceptor implements HttpInterceptor {
     const key = this.makeCacheKey(req.url, req.params);
 
     if (isPlatformBrowser(this.platformId)) {
-      return this.browserIntercepter(key, req, next)
+      return this.browserIntercepter(key, req, next);
     }
 
     if (isPlatformServer(this.platformId)) {
-      return this.serverIntercepter(key, req, next)
+      return this.serverIntercepter(key, req, next);
     }
   }
 
@@ -76,13 +76,13 @@ export class TransferHttpResponseInterceptor implements HttpInterceptor {
 
   private serverIntercepter(key: ReturnType<typeof makeStateKey>, req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(tap(event => {
-      if (event instanceof HttpResponse && event.status == 200) {
+      if (event instanceof HttpResponse && event.status === 200) {
         this.transferState.set(key, {
           body: event.body,
           headers: getHeadersMap(event.headers),
           status: event.status,
           statusText: event.statusText,
-          url: event.url!,
+          url: event.url,
         });
       }
     }));
@@ -91,8 +91,8 @@ export class TransferHttpResponseInterceptor implements HttpInterceptor {
   private makeCacheKey(url: string, params: HttpParams) {
     const encodedParams = params.keys().sort().map(k => `${k}=${params.get(k)}`).join('&');
     let key = `${STATE_KEY_PREFIX}.'GET.'${url}?${encodedParams}`;
-    this.countRequest[key] = (this.countRequest[key] || 1)
-    key = `${key}|${this.countRequest[key]}`
+    this.countRequest[key] = (this.countRequest[key] || 1);
+    key = `${key}|${this.countRequest[key]}`;
     return makeStateKey<TransferHttpResponse>(key);
   }
 }
