@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { IndexComponent } from './index.component';
 import { UniversalInterceptorModule } from '@/app/middleware/http/universal-interceptor.module';
 import { SomeComponent } from '@/app/component/some-component/some.component';
+import { TestComponent } from '@/app/component/test/test.component';
 
 describe('IndexComponent', () => {
   let component: IndexComponent;
@@ -15,6 +16,7 @@ describe('IndexComponent', () => {
       declarations: [
         IndexComponent,
         SomeComponent,
+        TestComponent,
       ],
       imports: [
         HttpClientTestingModule,
